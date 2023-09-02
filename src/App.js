@@ -1,7 +1,13 @@
+import React from "react";
+import "./App.css";
+import TodosSection from "./components/todosSection/TodosSection";
+import Header from "./components/header/Header";
+
 function App() {
   return (
-    <div>
-      <h1>hello world</h1>
+    <div data-test="app-component" className="container">
+      <Header />
+      <TodosSection />
     </div>
   );
 }
