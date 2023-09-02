@@ -1,15 +1,14 @@
 import React from "react";
-import TodosSection from "../TodosSection";
 import { shallow } from "enzyme";
+import Todo from "../Todo";
 import { findByTestAttr } from "../../../test/testUtils";
 
 const setup = () => {
-  return shallow(<TodosSection />);
+  return shallow(<Todo />);
 };
 
 test("render without error", () => {
   const wrapper = setup();
-  const todosSection = findByTestAttr(wrapper, "todos-section");
-  console.log(todosSection);
-  expect(todosSection.length).toBe(1);
+  const todoComponent = findByTestAttr(wrapper, "todo-component");
+  expect(todoComponent.length).toBe(1);
 });

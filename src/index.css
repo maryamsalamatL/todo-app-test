@@ -10,3 +10,6 @@ body {
   background-color: var(--bg-color);
   color: var(--primary-text-color);
 }
+button {
+  cursor: pointer;
+}

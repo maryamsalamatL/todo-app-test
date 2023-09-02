@@ -1,6 +1,9 @@
 :root {
   --bg-color: #fff;
   --primary-text-color: #3a3a3a;
+  --pale-pink: #fef4f3;
+  --pale-yellow: #fffbf2;
+  --pale-green: #f4f9f3;
 }
 
 .container {
@@ -29,4 +32,75 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+}
+.todos-section section {
+  width: 340px;
+  min-height: 700px;
+  padding: 20px 20px 30px 20px;
+  margin-right: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.undone-sec {
+  background-color: var(--pale-pink);
+}
+.doing-sec {
+  background-color: var(--pale-yellow);
+}
+.done-sec {
+  background-color: var(--pale-green);
+}
+
+.todos-section section .title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.todos-section section .title span {
+  font-size: 12px;
+  font-weight: 500;
+}
+.todo-list {
+  width: 100%;
+}
+
+.todo {
+  width: 100%;
+  display: flex;
+  background-color: var(--bg-color);
+  padding: 12px 10px;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  border: 1px solid #f3e1df;
+}
+.todo input[type="checkbox"] {
+  margin-right: 10px;
+}
+.todo textarea {
+  border: none;
+  overflow: hidden;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: vertical;
+  width: 100%;
+  height: auto;
+}
+.todo span {
+  position: absolute;
+  right: 5px;
 }
