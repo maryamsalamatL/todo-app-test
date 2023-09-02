@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Todo.js</title>
+    <title>Code coverage report for reducer.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> Todo.js</h1>
+        <h1><a href="index.html">All files</a> reducer.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/9</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
+                <span class='fraction'>0/6</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
                 <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/9</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,74 +88,56 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
-import { useEffect, useRef, useState } from "react";
-import { HiOutlineX } from "react-icons/hi";
-import { EDIT_TODO } from "../../actionTypes";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { UNDONE, DOING, DONE } from "../statusTypes";
+import { ADD_TODO_UNDONE, ADD_TODO_DOING, EDIT_TODO } from "../actionTypes";
 &nbsp;
-function Todo({ id, text, status, dispatch }) {
-  const [textValue, setTextValue] = useState(text);
-  const inputRef = useRef();
-  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    if (text === "") {</span>
-<span class="cstat-no" title="statement not covered" >      inputRef.current.focus();</span>
+export const reducer = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tate, { type, payload }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  switch (type) {</span>
+    case ADD_TODO_UNDONE(): {
+      const newTodo = <span class="cstat-no" title="statement not covered" >{ id: new Date().getTime(), text: "", status: UNDONE() };</span>
+      const updatedTodos = <span class="cstat-no" title="statement not covered" >[...state, newTodo];</span>
+<span class="cstat-no" title="statement not covered" >      return updatedTodos;</span>
     }
-  }, []);
-&nbsp;
-  const handleChange = <span class="fstat-no" title="function not covered" >({</span> target: { value } }) =&gt; {
-<span class="cstat-no" title="statement not covered" >    setTextValue(value);</span>
-<span class="cstat-no" title="statement not covered" >    dispatch({ type: EDIT_TODO(), payload: { id, status, text: textValue } });</span>
-  };
-&nbsp;
-  return (
-    &lt;li data-test="todo-component" className="todo"&gt;
-      &lt;input type="checkbox" /&gt;
-      &lt;textarea ref={inputRef} value={textValue} onChange={handleChange} /&gt;
-      &lt;span&gt;
-        &lt;HiOutlineX /&gt;
-      &lt;/span&gt;
-    &lt;/li&gt;
-  );
-}
-&nbsp;
-export default Todo;
+    case ADD_TODO_DOING(): {
+      const newTodo = <span class="cstat-no" title="statement not covered" >{ id: new Date().getTime(), text: "", status: DOING() };</span>
+      const updatedTodos = <span class="cstat-no" title="statement not covered" >[...state, newTodo];</span>
+<span class="cstat-no" title="statement not covered" >      return updatedTodos;</span>
+    }
+    case EDIT_TODO(): {
+      const updatedTodos = <span class="cstat-no" title="statement not covered" >[...state].map(<span class="fstat-no" title="function not covered" >(t</span>odo) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >        todo.id === payload.id ? { ...payload } : todo</span>
+      );
+<span class="cstat-no" title="statement not covered" >      return updatedTodos;</span>
+    }
+    default:
+<span class="cstat-no" title="statement not covered" >      return state;</span>
+  }
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -163,7 +145,7 @@ export default Todo;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-02T16:46:35.810Z
+                at 2023-09-02T17:08:14.333Z
             </div>
         <script src="prettify.js"></script>
         <script>

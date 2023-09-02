@@ -100,7 +100,7 @@
   width: 100%;
   height: auto;
 }
-.todo span {
+.todo button {
   position: absolute;
   right: 5px;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { DONE, UNDONE, DOING } from "../../statusTypes";
+import { ADD_TODO } from "../../actionTypes";
 import Todo from "./Todo";
 import PropTypes from "prop-types";
 function TodosList({ title, todos, id, dispatch }) {
@@ -30,7 +31,8 @@ function TodosList({ title, todos, id, dispatch }) {
           data-test="todos-list-btn"
           onClick={() =>
             dispatch({
-              type: id === UNDONE() ? "ADD_TODO_UNDONE" : "ADD_TODO_DOING",
+              type: ADD_TODO(),
+              payload: { status: id === UNDONE() ? UNDONE() : DOING() },
             })
           }
         >
@@ -46,7 +48,7 @@ TodosList.propTypes = {
   id: PropTypes.string.isRequired,
   todos: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
     })
