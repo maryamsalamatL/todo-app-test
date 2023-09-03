@@ -5,6 +5,7 @@ import {
   EDIT_TODO,
   ADD_TODO_BY_PAST,
   CHANGE_STATUS,
+  CHANGE_STATUS_BY_DND,
 } from "../../actionTypes";
 import { UNDONE, DONE } from "../../statusTypes";
 
@@ -64,4 +65,16 @@ describe("return expecte state by dispaching a certain action", () => {
 
     expect(updatedState.length).toBe(3);
   });
+
+  // test("drag and drop", () => {
+  //   const updatedState = reducer(state, {
+  //     type: CHANGE_STATUS_BY_DND(),
+  //     payload: { status: DONE(), id: 1 },
+  //   });
+
+  //   expect(updatedState).toEqual([
+  //     { id: 1, text: "test", status: DONE() },
+  //     { id: 2, text: "test2", status: UNDONE() },
+  //   ]);
+  // });
 });

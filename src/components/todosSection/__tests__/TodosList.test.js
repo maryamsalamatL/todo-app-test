@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { findByTestAttr, checkPropType } from "../../../test/testUtils";
 import TodosList from "../TodosList";
-import { DOING, DONE, UNDONE } from "../../../statusTypes";
+import { DOING, DONE, UNDONE } from "../../../test/statusTypes";
 
 const defaultProps = {
   title: "Todo",

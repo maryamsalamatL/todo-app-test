@@ -128,6 +128,8 @@
   position: relative;
   margin-bottom: 12px;
   border-radius: 4px;
+  animation: todo 0.3s ease-in-out;
+  -webkit-animation: todo 0.3s ease-in-out;
 }
 .todo input[type="checkbox"] {
   margin-right: 10px;
@@ -179,6 +181,8 @@
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
+  animation: delete-btn 0.3s ease-in-out;
+  -webkit-animation: delete-btn 0.3s ease-in-out;
 }
 .todo:hover button {
   visibility: visible;
@@ -202,4 +206,40 @@
 }
 .add-btn-done {
   color: #c2a25b;
+}
+.dropping {
+  opacity: 0.5;
+}
+.dragging {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+@keyframes delete-btn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes todo {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+  }
 }

@@ -9,6 +9,8 @@ import {
 } from "../../actionTypes";
 import { UNDONE, DONE, DOING } from "../../statusTypes";
 import PropTypes from "prop-types";
+import { memo } from "react";
+import { useDrag } from "react-dnd";
 
 function Todo({ id, text, status, dispatch }) {
   const [values, setValues] = useState({ text, checked: false });
@@ -53,8 +55,20 @@ function Todo({ id, text, status, dispatch }) {
     });
   };
 
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: "todo",
+    item: { id },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
+    }),
+  }));
+
   return (
-    <li data-test="todo-component" className="todo">
+    <li
+      data-test="todo-component"
+      className={`todo ${isDragging ? "dragging" : ""}`}
+      ref={drag}
+    >
       <input
         type="checkbox"
         value={values.checked}
@@ -91,4 +105,4 @@ Todo.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default Todo;
+export default memo(Todo);

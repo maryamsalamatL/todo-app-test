@@ -11,10 +11,13 @@ module.exports = {
   },
   transformIgnorePatterns: [
     "/node_modules/",
-    "^.+\\.module\\.(css|sass|scss)$",
+    "^.+\\.module\\.(css|sass|scss|react-dnd|react-dnd-html5-backend)$",
   ],
+
   moduleNameMapper: {
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "^react-dnd$": "react-dnd/dist/cjs",
+    "^react-dnd-html5-backend$": "react-dnd-html5-backend/dist/cjs",
   },
   resolver: undefined,
 };

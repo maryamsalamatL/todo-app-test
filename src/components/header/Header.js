@@ -1,6 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 
 function Header() {
+  console.log("render header");
   return (
     <header data-test="header-component" className="header">
       <h1>✔️ Task List</h1>
@@ -13,4 +14,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);

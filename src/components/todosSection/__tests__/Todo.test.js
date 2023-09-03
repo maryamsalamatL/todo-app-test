@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import Todo from "../Todo";
 import { findByTestAttr } from "../../../test/testUtils";
-import { UNDONE } from "../../../statusTypes";
+import { UNDONE } from "../../../types/statusTypes";
 import { checkPropType } from "../../../test/testUtils";
 
 const setup = () => {

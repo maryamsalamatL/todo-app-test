@@ -1,12 +1,45 @@
 import React from "react";
 import { DONE, UNDONE, DOING } from "../../statusTypes";
-import { ADD_TODO } from "../../actionTypes";
+import { ADD_TODO, CHANGE_STATUS_BY_DND } from "../../actionTypes";
 import Todo from "./Todo";
 import PropTypes from "prop-types";
 import { HiOutlinePlus } from "react-icons/hi";
+import { memo } from "react";
+import { useDrop } from "react-dnd";
+
 function TodosList({ title, todos, id, dispatch }) {
+  const addItemToSection = (item) => {
+    if (id === UNDONE()) {
+      dispatch({
+        type: CHANGE_STATUS_BY_DND(),
+        payload: { id: item.id, status: UNDONE() },
+      });
+    }
+    if (id === DOING()) {
+      dispatch({
+        type: CHANGE_STATUS_BY_DND(),
+        payload: { id: item.id, status: DOING() },
+      });
+    }
+    if (id === DONE()) {
+      dispatch({
+        type: CHANGE_STATUS_BY_DND(),
+        payload: { id: item.id, status: DONE() },
+      });
+    }
+  };
+
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: "todo",
+    drop: (item) => addItemToSection(item),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
   return (
     <section
+      ref={drop}
       data-test="todos-list"
       className={
         id === UNDONE()
@@ -20,7 +53,10 @@ function TodosList({ title, todos, id, dispatch }) {
         <h3>{title}</h3>
         <span>{todos.length && todos.length}</span>
       </div>
-      <ul className="todo-list" data-test="todo-list">
+      <ul
+        className={`todo-list ${isOver ? "dropping" : ""}`}
+        data-test="todo-list"
+      >
         {todos.map((item) => (
           <Todo {...item} key={item.id} dispatch={dispatch} />
         ))}
@@ -42,7 +78,7 @@ function TodosList({ title, todos, id, dispatch }) {
         >
           <span>
             <HiOutlinePlus />
-          </span>{" "}
+          </span>
           New
         </button>
       )}
@@ -63,4 +99,4 @@ TodosList.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default TodosList;
+export default memo(TodosList);

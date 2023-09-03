@@ -5,6 +5,7 @@ import {
   DELETE_TODO,
   CHANGE_STATUS,
   ADD_TODO_BY_PAST,
+  CHANGE_STATUS_BY_DND,
 } from "../actionTypes";
 
 export const reducer = (state, { type, payload }) => {
@@ -50,6 +51,13 @@ export const reducer = (state, { type, payload }) => {
       const updatedTodos = [...state, ...newTodos];
       return updatedTodos;
     }
+    case CHANGE_STATUS_BY_DND(): {
+      const updatedTodos = [...state].map((todo) =>
+        todo.id === payload.id ? { ...todo, status: payload.status } : todo
+      );
+      return updatedTodos;
+    }
+
     default:
       return state;
   }
