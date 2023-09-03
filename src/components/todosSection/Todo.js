@@ -6,8 +6,8 @@ import {
   DELETE_TODO,
   CHANGE_STATUS,
   ADD_TODO_BY_PAST,
-} from "../../actionTypes";
-import { UNDONE, DONE, DOING } from "../../statusTypes";
+} from "../../types/actionTypes";
+import { UNDONE, DONE, DOING } from "../../types/statusTypes";
 import PropTypes from "prop-types";
 import { memo } from "react";
 import { useDrag } from "react-dnd";

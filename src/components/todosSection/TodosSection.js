@@ -1,12 +1,20 @@
 import React from "react";
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import TodosList from "./TodosList";
-import { UNDONE, DOING, DONE } from "../../statusTypes";
+import { UNDONE, DOING, DONE } from "../../types/statusTypes";
 import { reducer } from "../../reducer/reducer";
 import { data } from "../../data/data";
+import { GET_ALL_DATA } from "../../types/actionTypes";
 
 function TodosSection() {
-  const [todos, dispatch] = useReducer(reducer, data);
+  const [todos, dispatch] = useReducer(reducer, []);
+
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem("todos")) || data;
+    dispatch({ type: GET_ALL_DATA(), payload: { data: savedTodos } });
+  }, []);
+
+  if (!todos.length) return;
 
   const undoneTodos = todos.filter((todo) => todo.status === UNDONE());
   const doingTodos = todos.filter((todo) => todo.status === DOING());

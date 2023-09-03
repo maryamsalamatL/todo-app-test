@@ -6,8 +6,9 @@ import {
   ADD_TODO_BY_PAST,
   CHANGE_STATUS,
   CHANGE_STATUS_BY_DND,
-} from "../../actionTypes";
-import { UNDONE, DONE } from "../../statusTypes";
+
+} from "../../types/actionTypes";
+import { UNDONE, DONE } from "../../types/statusTypes";
 
 describe("return expecte state by dispaching a certain action", () => {
   let state = [

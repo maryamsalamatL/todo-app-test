@@ -1,6 +1,6 @@
 import React from "react";
-import { DONE, UNDONE, DOING } from "../../statusTypes";
-import { ADD_TODO, CHANGE_STATUS_BY_DND } from "../../actionTypes";
+import { DONE, UNDONE, DOING } from "../../types/statusTypes";
+import { ADD_TODO, CHANGE_STATUS_BY_DND } from "../../types/actionTypes";
 import Todo from "./Todo";
 import PropTypes from "prop-types";
 import { HiOutlinePlus } from "react-icons/hi";
