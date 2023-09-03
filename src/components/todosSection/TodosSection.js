@@ -41,7 +41,7 @@ const data = [
     status: "DONE",
   },
 ];
-console.log(data);
+
 function TodosSection() {
   const [todos, dispatch] = useReducer(reducer, data);
 

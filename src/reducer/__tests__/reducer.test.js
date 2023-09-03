@@ -9,14 +9,17 @@ import {
 import { UNDONE, DONE } from "../../statusTypes";
 
 describe("return expecte state by dispaching a certain action", () => {
-  let state = [{ id: 1, text: "test", status: UNDONE() }];
+  let state = [
+    { id: 1, text: "test", status: UNDONE() },
+    { id: 2, text: "test2", status: UNDONE() },
+  ];
   test("add one todo to state", () => {
     const updatedState = reducer(state, {
       type: ADD_TODO(),
       payload: { status: UNDONE() },
     });
 
-    expect(updatedState.length).toBe(2);
+    expect(updatedState.length).toBe(3);
   });
 
   test("delete todo", () => {
@@ -25,16 +28,19 @@ describe("return expecte state by dispaching a certain action", () => {
       payload: { id: 1 },
     });
 
-    expect(updatedState.length).toBe(0);
+    expect(updatedState.length).toBe(1);
   });
 
   test("change status", () => {
     const updatedState = reducer(state, {
       type: CHANGE_STATUS(),
-      payload: { id: 1, status: DONE() },
+      payload: { id: 2, status: DONE() },
     });
 
-    expect(updatedState).toEqual([{ id: 1, text: "test", status: DONE() }]);
+    expect(updatedState).toEqual([
+      { id: 2, text: "test2", status: DONE() },
+      { id: 1, text: "test", status: UNDONE() },
+    ]);
   });
 
   test("edit todo", () => {
@@ -43,9 +49,11 @@ describe("return expecte state by dispaching a certain action", () => {
       payload: { id: 1, status: UNDONE(), text: "edited text" },
     });
 
-    expect(updatedState).toEqual([
-      { id: 1, text: "edited text", status: UNDONE() },
-    ]);
+    expect(updatedState[0]).toEqual({
+      id: 1,
+      text: "edited text",
+      status: UNDONE(),
+    });
   });
 
   test("add by paste", () => {
@@ -54,6 +62,6 @@ describe("return expecte state by dispaching a certain action", () => {
       payload: { status: UNDONE(), text: "empty" },
     });
 
-    expect(updatedState.length).toBe(2);
+    expect(updatedState.length).toBe(3);
   });
 });

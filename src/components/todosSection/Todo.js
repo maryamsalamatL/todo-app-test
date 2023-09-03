@@ -20,15 +20,8 @@ function Todo({ id, text, status, dispatch }) {
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    if (e.target.name === "text") {
-      console.log(e.target.value);
-      dispatch({
-        type: EDIT_TODO(),
-        payload: { id, status, text: e.target.value },
-      });
-    } else if (e.target.name === "checked") {
+    if (e.target.name === "checked") {
       const statusToBe = status === DONE() ? UNDONE() : DONE();
-      console.log(statusToBe);
       dispatch({
         type: CHANGE_STATUS(),
         payload: { id, status: statusToBe },
@@ -36,7 +29,16 @@ function Todo({ id, text, status, dispatch }) {
     }
   };
 
+  const blurHandler = () => {
+    if (values.text === "") dispatch({ type: DELETE_TODO(), payload: { id } });
+    dispatch({
+      type: EDIT_TODO(),
+      payload: { id, status, text: values.text },
+    });
+  };
+
   const pasteHandler = (e) => {
+    if (values.text === "") dispatch({ type: DELETE_TODO(), payload: { id } });
     e.stopPropagation();
     e.preventDefault();
     const clipboardData = e.clipboardData || window.clipboardData;
@@ -55,7 +57,6 @@ function Todo({ id, text, status, dispatch }) {
         value={values.checked}
         onChange={handleChange}
         name="checked"
-        checked={values.checked}
       />
       <textarea
         ref={inputRef}
@@ -63,6 +64,11 @@ function Todo({ id, text, status, dispatch }) {
         onChange={handleChange}
         name="text"
         onPaste={pasteHandler}
+        onBlur={blurHandler}
+        cols={35}
+        rows={
+          values.text ? Math.ceil(values.text.split("").length / 35) + 1 : 1
+        }
       />
       <button
         onClick={() => dispatch({ type: DELETE_TODO(), payload: { id } })}

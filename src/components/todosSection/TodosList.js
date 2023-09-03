@@ -17,7 +17,7 @@ function TodosList({ title, todos, id, dispatch }) {
     >
       <div className="title" data-test="todos-list-title">
         <h3>{title}</h3>
-        <span>2</span>
+        <span>{todos.length}</span>
       </div>
       <ul className="todo-list" data-test="todo-list">
         {todos.map((item) => (

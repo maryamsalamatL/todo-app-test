@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.08% </span>
+                <span class="strong">28% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/23</span>
+                <span class='fraction'>7/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">7.14% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/10</span>
+                <span class='fraction'>1/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>1/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.08% </span>
+                <span class="strong">30.43% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/23</span>
+                <span class='fraction'>7/23</span>
             </div>
         
             
@@ -139,7 +139,13 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -167,11 +173,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,12 +191,17 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -237,15 +249,8 @@ function Todo({ id, text, status, dispatch }) {
 &nbsp;
   const handleChange = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
 <span class="cstat-no" title="statement not covered" >    setValues({ ...values, [e.target.name]: e.target.value });</span>
-<span class="cstat-no" title="statement not covered" >    if (e.target.name === "text") {</span>
-<span class="cstat-no" title="statement not covered" >      console.log(e.target.value);</span>
-<span class="cstat-no" title="statement not covered" >      dispatch({</span>
-        type: EDIT_TODO(),
-        payload: { id, status, text: e.target.value },
-      });
-    } else <span class="cstat-no" title="statement not covered" >if (e.target.name === "checked") {</span>
+<span class="cstat-no" title="statement not covered" >    if (e.target.name === "checked") {</span>
       const statusToBe = <span class="cstat-no" title="statement not covered" >status === DONE() ? UNDONE() : DONE();</span>
-<span class="cstat-no" title="statement not covered" >      console.log(statusToBe);</span>
 <span class="cstat-no" title="statement not covered" >      dispatch({</span>
         type: CHANGE_STATUS(),
         payload: { id, status: statusToBe },
@@ -253,7 +258,16 @@ function Todo({ id, text, status, dispatch }) {
     }
   };
 &nbsp;
+  const blurHandler = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (values.text === "") <span class="cstat-no" title="statement not covered" >dispatch({ type: DELETE_TODO(), payload: { id } });</span></span>
+<span class="cstat-no" title="statement not covered" >    dispatch({</span>
+      type: EDIT_TODO(),
+      payload: { id, status, text: values.text },
+    });
+  };
+&nbsp;
   const pasteHandler = <span class="fstat-no" title="function not covered" >(e</span>) =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (values.text === "") <span class="cstat-no" title="statement not covered" >dispatch({ type: DELETE_TODO(), payload: { id } });</span></span>
 <span class="cstat-no" title="statement not covered" >    e.stopPropagation();</span>
 <span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
     const clipboardData = <span class="cstat-no" title="statement not covered" >e.clipboardData || window.clipboardData;</span>
@@ -272,7 +286,6 @@ function Todo({ id, text, status, dispatch }) {
         value={values.checked}
         onChange={handleChange}
         name="checked"
-        checked={values.checked}
       /&gt;
       &lt;textarea
         ref={inputRef}
@@ -280,6 +293,11 @@ function Todo({ id, text, status, dispatch }) {
         onChange={handleChange}
         name="text"
         onPaste={pasteHandler}
+        onBlur={blurHandler}
+        cols={35}
+        rows={
+          values.text ? <span class="branch-0 cbranch-no" title="branch not covered" >Math.ceil(values.text.split("").length / 35) + 1 </span>: 1
+        }
       /&gt;
       &lt;button
         onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >dispatch({ type: DELETE_TODO(), payload: { id } })}</span>
@@ -298,7 +316,7 @@ export default Todo;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-02T20:00:42.754Z
+                at 2023-09-03T12:33:23.216Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

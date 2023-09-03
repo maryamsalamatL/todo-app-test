@@ -15,7 +15,8 @@ export const reducer = (state, { type, payload }) => {
         text: "",
         status: payload.status,
       };
-      const updatedTodos = [...state, newTodo];
+      const updatedTodos = [...state];
+      updatedTodos.unshift(newTodo);
       return updatedTodos;
     }
 
@@ -30,9 +31,12 @@ export const reducer = (state, { type, payload }) => {
       return updatedTodos;
     }
     case CHANGE_STATUS(): {
-      const updatedTodos = [...state].map((todo) =>
-        todo.id === payload.id ? { ...todo, status: payload.status } : todo
+      const updatedItem = [...state].find((todo) => todo.id === payload.id);
+      updatedItem.status = payload.status;
+      const updatedTodos = [...state].filter(
+        (todo) => todo.id !== updatedItem.id
       );
+      updatedTodos.unshift(updatedItem);
       return updatedTodos;
     }
     case ADD_TODO_BY_PAST(): {

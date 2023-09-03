@@ -81,6 +81,7 @@
   background-color: var(--bg-color);
   padding: 12px 10px;
   justify-content: flex-start;
+  align-items: center;
   position: relative;
   margin-bottom: 12px;
   border-radius: 4px;
@@ -88,19 +89,44 @@
 }
 .todo input[type="checkbox"] {
   margin-right: 10px;
+  accent-color: red;
 }
+/* .todo input[type="checkbox"]:checked::after {
+  content: "\2713";
+  display: block;
+  text-align: center;
+  color: #41b883;
+  position: absolute;
+  left: 0.7rem;
+  top: 0.2rem;
+} */
 .todo textarea {
   border: none;
   overflow: hidden;
   outline: none;
+  box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  box-shadow: none;
-  resize: vertical;
-  width: 100%;
+  resize: none;
+  width: 80%;
   height: auto;
+  max-width: fit-content;
 }
 .todo button {
+  border: none;
+  outline: none;
+  color: #d37a87;
+  background-color: inherit;
+  visibility: hidden;
   position: absolute;
   right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+.todo:hover button {
+  visibility: visible;
 }
