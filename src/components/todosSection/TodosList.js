@@ -8,6 +8,7 @@ import { memo } from "react";
 import { useDrop } from "react-dnd";
 
 function TodosList({ title, todos, id, dispatch }) {
+  //dnd
   const addItemToSection = (item) => {
     if (id === UNDONE()) {
       dispatch({
@@ -28,7 +29,6 @@ function TodosList({ title, todos, id, dispatch }) {
       });
     }
   };
-
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "todo",
     drop: (item) => addItemToSection(item),
@@ -49,39 +49,16 @@ function TodosList({ title, todos, id, dispatch }) {
           : "done-sec"
       }
     >
-      <div className="title" data-test="todos-list-title">
+      <div className="title">
         <h3>{title}</h3>
         <span>{todos.length && todos.length}</span>
       </div>
-      <ul
-        className={`todo-list ${isOver ? "dropping" : ""}`}
-        data-test="todo-list"
-      >
+      <ul className={`todo-list ${isOver ? "dropping" : ""}`}>
         {todos.map((item) => (
           <Todo {...item} key={item.id} dispatch={dispatch} />
         ))}
       </ul>
-      {id === DONE() ? (
-        ""
-      ) : (
-        <button
-          data-test="todos-list-btn"
-          className={`add-btn ${
-            id === UNDONE() ? "add-btn-undone" : "add-btn-done"
-          }`}
-          onClick={() =>
-            dispatch({
-              type: ADD_TODO(),
-              payload: { status: id === UNDONE() ? UNDONE() : DOING() },
-            })
-          }
-        >
-          <span>
-            <HiOutlinePlus />
-          </span>
-          New
-        </button>
-      )}
+      {id === DONE() ? "" : <AddBtn id={id} dispatch={dispatch} />}
     </section>
   );
 }
@@ -100,3 +77,24 @@ TodosList.propTypes = {
 };
 
 export default memo(TodosList);
+
+function AddBtn({ id, dispatch }) {
+  return (
+    <button
+      className={`add-btn ${
+        id === UNDONE() ? "add-btn-undone" : "add-btn-done"
+      }`}
+      onClick={() =>
+        dispatch({
+          type: ADD_TODO(),
+          payload: { status: id === UNDONE() ? UNDONE() : DOING() },
+        })
+      }
+    >
+      <span>
+        <HiOutlinePlus />
+      </span>
+      New
+    </button>
+  );
+}

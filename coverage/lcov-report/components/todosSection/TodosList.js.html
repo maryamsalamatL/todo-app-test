@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/15</span>
             </div>
         
             
@@ -163,9 +163,8 @@
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
 <a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,12 +175,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,6 +184,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,14 +220,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -255,6 +246,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -277,6 +273,7 @@ import { memo } from "react";
 import { useDrop } from "react-dnd";
 &nbsp;
 function <span class="fstat-no" title="function not covered" >TodosList(</span>{ title, todos, id, dispatch }) {
+  //dnd
   const addItemToSection = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (id === UNDONE()) {</span>
 <span class="cstat-no" title="statement not covered" >      dispatch({</span>
@@ -297,7 +294,6 @@ function <span class="fstat-no" title="function not covered" >TodosList(</span>{
       });
     }
   };
-&nbsp;
   const [{ isOver }, drop] = <span class="cstat-no" title="statement not covered" >useDrop(<span class="fstat-no" title="function not covered" >()</span> =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
     accept: "todo",
     drop: <span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; <span class="cstat-no" title="statement not covered" >addItemToSection(item),</span>
@@ -318,39 +314,16 @@ function <span class="fstat-no" title="function not covered" >TodosList(</span>{
           : "done-sec"
       }
     &gt;
-      &lt;div className="title" data-test="todos-list-title"&gt;
+      &lt;div className="title"&gt;
         &lt;h3&gt;{title}&lt;/h3&gt;
         &lt;span&gt;{todos.length &amp;&amp; todos.length}&lt;/span&gt;
       &lt;/div&gt;
-      &lt;ul
-        className={`todo-list ${isOver ? "dropping" : ""}`}
-        data-test="todo-list"
-      &gt;
+      &lt;ul className={`todo-list ${isOver ? "dropping" : ""}`}&gt;
         {todos.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; (
 <span class="cstat-no" title="statement not covered" >          &lt;Todo {...item} key={item.id} dispatch={dispatch} /&gt;</span>
         ))}
       &lt;/ul&gt;
-      {id === DONE() ? (
-        ""
-      ) : (
-        &lt;button
-          data-test="todos-list-btn"
-          className={`add-btn ${
-            id === UNDONE() ? "add-btn-undone" : "add-btn-done"
-          }`}
-          onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt;
-<span class="cstat-no" title="statement not covered" >            dispatch({</span>
-              type: ADD_TODO(),
-              payload: { status: id === UNDONE() ? UNDONE() : DOING() },
-            })
-          }
-        &gt;
-          &lt;span&gt;
-            &lt;HiOutlinePlus /&gt;
-          &lt;/span&gt;
-          New
-        &lt;/button&gt;
-      )}
+      {id === DONE() ? "" : &lt;AddBtn id={id} dispatch={dispatch} /&gt;}
     &lt;/section&gt;
   );
 }
@@ -369,6 +342,27 @@ function <span class="fstat-no" title="function not covered" >TodosList(</span>{
 };
 &nbsp;
 export default memo(TodosList);
+&nbsp;
+function <span class="fstat-no" title="function not covered" >AddBtn(</span>{ id, dispatch }) {
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;button
+      className={`add-btn ${
+        id === UNDONE() ? "add-btn-undone" : "add-btn-done"
+      }`}
+      onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt;
+<span class="cstat-no" title="statement not covered" >        dispatch({</span>
+          type: ADD_TODO(),
+          payload: { status: id === UNDONE() ? UNDONE() : DOING() },
+        })
+      }
+    &gt;
+      &lt;span&gt;
+        &lt;HiOutlinePlus /&gt;
+      &lt;/span&gt;
+      New
+    &lt;/button&gt;
+  );
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -376,7 +370,7 @@ export default memo(TodosList);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-03T18:35:44.502Z
+                at 2023-09-03T19:55:41.948Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -13,8 +13,11 @@ import { memo } from "react";
 import { useDrag } from "react-dnd";
 
 function Todo({ id, text, status, dispatch }) {
-  const [values, setValues] = useState({ text, checked: false });
   const inputRef = useRef();
+  const [values, setValues] = useState({
+    text,
+    checked: status === DONE() ? true : false,
+  });
   useEffect(() => {
     if (text === "") {
       inputRef.current.focus();
@@ -22,16 +25,17 @@ function Todo({ id, text, status, dispatch }) {
   }, []);
 
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    if (e.target.name === "checked") {
-      const statusToBe = status === DONE() ? UNDONE() : DONE();
-      setTimeout(() => {
-        dispatch({
-          type: CHANGE_STATUS(),
-          payload: { id, status: statusToBe },
-        });
-      }, 3000);
-    }
+    setValues({ ...values, text: e.target.value });
+  };
+  const handleChecked = (e) => {
+    setValues({ ...values, checked: !values.checked });
+    const statusToBe = status === DONE() ? UNDONE() : DONE();
+    setTimeout(() => {
+      dispatch({
+        type: CHANGE_STATUS(),
+        payload: { id, status: statusToBe },
+      });
+    }, 3000);
   };
 
   const blurHandler = () => {
@@ -72,9 +76,9 @@ function Todo({ id, text, status, dispatch }) {
       <input
         type="checkbox"
         value={values.checked}
-        onChange={handleChange}
+        onChange={handleChecked}
         name="checked"
-        checked={status === DONE()}
+        checked={values.checked}
       />
 
       <textarea
