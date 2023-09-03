@@ -3,6 +3,7 @@ import { DONE, UNDONE, DOING } from "../../statusTypes";
 import { ADD_TODO } from "../../actionTypes";
 import Todo from "./Todo";
 import PropTypes from "prop-types";
+import { HiOutlinePlus } from "react-icons/hi";
 function TodosList({ title, todos, id, dispatch }) {
   return (
     <section
@@ -17,7 +18,7 @@ function TodosList({ title, todos, id, dispatch }) {
     >
       <div className="title" data-test="todos-list-title">
         <h3>{title}</h3>
-        <span>{todos.length}</span>
+        <span>{todos.length && todos.length}</span>
       </div>
       <ul className="todo-list" data-test="todo-list">
         {todos.map((item) => (
@@ -29,6 +30,9 @@ function TodosList({ title, todos, id, dispatch }) {
       ) : (
         <button
           data-test="todos-list-btn"
+          className={`add-btn ${
+            id === UNDONE() ? "add-btn-undone" : "add-btn-done"
+          }`}
           onClick={() =>
             dispatch({
               type: ADD_TODO(),
@@ -36,7 +40,10 @@ function TodosList({ title, todos, id, dispatch }) {
             })
           }
         >
-          add
+          <span>
+            <HiOutlinePlus />
+          </span>{" "}
+          New
         </button>
       )}
     </section>
@@ -52,7 +59,8 @@ TodosList.propTypes = {
       text: PropTypes.string.isRequired,
       status: PropTypes.string.isRequired,
     })
-  ),
+  ).isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default TodosList;

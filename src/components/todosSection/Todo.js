@@ -8,6 +8,7 @@ import {
   ADD_TODO_BY_PAST,
 } from "../../actionTypes";
 import { UNDONE, DONE, DOING } from "../../statusTypes";
+import PropTypes from "prop-types";
 
 function Todo({ id, text, status, dispatch }) {
   const [values, setValues] = useState({ text, checked: false });
@@ -22,10 +23,12 @@ function Todo({ id, text, status, dispatch }) {
     setValues({ ...values, [e.target.name]: e.target.value });
     if (e.target.name === "checked") {
       const statusToBe = status === DONE() ? UNDONE() : DONE();
-      dispatch({
-        type: CHANGE_STATUS(),
-        payload: { id, status: statusToBe },
-      });
+      setTimeout(() => {
+        dispatch({
+          type: CHANGE_STATUS(),
+          payload: { id, status: statusToBe },
+        });
+      }, 3000);
     }
   };
 
@@ -57,7 +60,9 @@ function Todo({ id, text, status, dispatch }) {
         value={values.checked}
         onChange={handleChange}
         name="checked"
+        checked={status === DONE()}
       />
+
       <textarea
         ref={inputRef}
         value={values.text}
@@ -78,5 +83,12 @@ function Todo({ id, text, status, dispatch }) {
     </li>
   );
 }
+
+Todo.propTypes = {
+  id: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
 
 export default Todo;
