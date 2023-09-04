@@ -12,4 +12,7 @@ Builds the app for production to the build folder.
 webpack and babel will handle compiling and transpiling modules.
 
 ### npm test 
-Runs tests in watch mood./(there is a conflict in jest supporting react-dnd,witch i tried so may ways to resolve ,but failed.it will be a pleasure to hear your recommendation)
+Runs tests in watch mood.(there is a conflict in jest supporting react-dnd,witch i tried so may ways to resolve ,but failed.it will be a pleasure to hear your recommendation)
+
+### npm run cypress:open
+Runs e2e test
