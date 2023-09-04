@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/30</span>
+                <span class='fraction'>0/31</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/27</span>
+                <span class='fraction'>0/28</span>
             </div>
         
             
@@ -171,7 +171,11 @@
 <a name='L106'></a><a href='#L106'>106</a>
 <a name='L107'></a><a href='#L107'>107</a>
 <a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,6 +192,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -196,11 +203,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -287,15 +295,18 @@ import {
   DELETE_TODO,
   CHANGE_STATUS,
   ADD_TODO_BY_PAST,
-} from "../../actionTypes";
-import { UNDONE, DONE, DOING } from "../../statusTypes";
+} from "../../types/actionTypes";
+import { UNDONE, DONE, DOING } from "../../types/statusTypes";
 import PropTypes from "prop-types";
 import { memo } from "react";
 import { useDrag } from "react-dnd";
 &nbsp;
 function <span class="fstat-no" title="function not covered" >Todo(</span>{ id, text, status, dispatch }) {
-  const [values, setValues] = <span class="cstat-no" title="statement not covered" >useState({ text, checked: false });</span>
   const inputRef = <span class="cstat-no" title="statement not covered" >useRef();</span>
+  const [values, setValues] = <span class="cstat-no" title="statement not covered" >useState({</span>
+    text,
+    checked: status === DONE() ? true : false,
+  });
 <span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (text === "") {</span>
 <span class="cstat-no" title="statement not covered" >      inputRef.current.focus();</span>
@@ -303,16 +314,17 @@ function <span class="fstat-no" title="function not covered" >Todo(</span>{ id, 
   }, []);
 &nbsp;
   const handleChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setValues({ ...values, [e.target.name]: e.target.value });</span>
-<span class="cstat-no" title="statement not covered" >    if (e.target.name === "checked") {</span>
-      const statusToBe = <span class="cstat-no" title="statement not covered" >status === DONE() ? UNDONE() : DONE();</span>
-<span class="cstat-no" title="statement not covered" >      setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        dispatch({</span>
-          type: CHANGE_STATUS(),
-          payload: { id, status: statusToBe },
-        });
-      }, 3000);
-    }
+<span class="cstat-no" title="statement not covered" >    setValues({ ...values, text: e.target.value });</span>
+  };
+  const handleChecked = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    setValues({ ...values, checked: !values.checked });</span>
+    const statusToBe = <span class="cstat-no" title="statement not covered" >status === DONE() ? UNDONE() : DONE();</span>
+<span class="cstat-no" title="statement not covered" >    setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      dispatch({</span>
+        type: CHANGE_STATUS(),
+        payload: { id, status: statusToBe },
+      });
+    }, 3000);
   };
 &nbsp;
   const blurHandler = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
@@ -353,9 +365,9 @@ function <span class="fstat-no" title="function not covered" >Todo(</span>{ id, 
       &lt;input
         type="checkbox"
         value={values.checked}
-        onChange={handleChange}
+        onChange={handleChecked}
         name="checked"
-        checked={status === DONE()}
+        checked={values.checked}
       /&gt;
 &nbsp;
       &lt;textarea
@@ -394,7 +406,7 @@ export default memo(Todo);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-03T17:46:19.461Z
+                at 2023-09-04T08:48:43.825Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

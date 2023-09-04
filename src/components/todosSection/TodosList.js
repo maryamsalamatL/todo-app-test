@@ -53,7 +53,10 @@ function TodosList({ title, todos, id, dispatch }) {
         <h3>{title}</h3>
         <span>{todos.length && todos.length}</span>
       </div>
-      <ul className={`todo-list ${isOver ? "dropping" : ""}`}>
+      <ul
+        data-test={`todo-list-${id}`}
+        className={`todo-list ${isOver ? "dropping" : ""}`}
+      >
         {todos.map((item) => (
           <Todo {...item} key={item.id} dispatch={dispatch} />
         ))}
@@ -81,6 +84,7 @@ export default memo(TodosList);
 function AddBtn({ id, dispatch }) {
   return (
     <button
+      data-test={`add-btn-${id}`}
       className={`add-btn ${
         id === UNDONE() ? "add-btn-undone" : "add-btn-done"
       }`}

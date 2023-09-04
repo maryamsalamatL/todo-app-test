@@ -1,16 +1,16 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineX } from "react-icons/hi";
+import PropTypes from "prop-types";
+import { memo } from "react";
+import { useDrag } from "react-dnd";
 import {
   EDIT_TODO,
   DELETE_TODO,
   CHANGE_STATUS,
   ADD_TODO_BY_PAST,
 } from "../../types/actionTypes";
-import { UNDONE, DONE, DOING } from "../../types/statusTypes";
-import PropTypes from "prop-types";
-import { memo } from "react";
-import { useDrag } from "react-dnd";
+import { UNDONE, DONE } from "../../types/statusTypes";
 
 function Todo({ id, text, status, dispatch }) {
   const inputRef = useRef();
@@ -69,11 +69,12 @@ function Todo({ id, text, status, dispatch }) {
 
   return (
     <li
-      data-test="todo-component"
+      data-test={`todo-component-${id}`}
       className={`todo ${isDragging ? "dragging" : ""}`}
       ref={drag}
     >
       <input
+        data-test={`todo-checkbox-${id}`}
         type="checkbox"
         value={values.checked}
         onChange={handleChecked}
@@ -82,6 +83,7 @@ function Todo({ id, text, status, dispatch }) {
       />
 
       <textarea
+        data-test={`textarea`}
         ref={inputRef}
         value={values.text}
         onChange={handleChange}
@@ -95,6 +97,7 @@ function Todo({ id, text, status, dispatch }) {
       />
       <button
         onClick={() => dispatch({ type: DELETE_TODO(), payload: { id } })}
+        data-test={`todo-remove-${id}`}
       >
         <HiOutlineX />
       </button>
